@@ -1,0 +1,12 @@
+.styledcolmn{
+    border:2px dotted #ffffff;
+    height: 100%vh;
+}
+h3{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    color:#ffffff;
+    text-align: center;
+    padding:2px 0 2px 0
+}
