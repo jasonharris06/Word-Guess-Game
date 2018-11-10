@@ -86,34 +86,101 @@
     </div>
     <!-- Optional JavaScript -->
     <script>
+
         $(document).ready(function () {
 
-
-            var userInput = "";
+            var userGuess = "";
             var wins = 0;
             var loses = 0;
             var gamefinish = true;
+            var guesses = 15;
             var artist = {
-                artist: ["areial", "jason", "greg"],
+                artist: ["gregory", "jason", "dj"],
 
             }
+
+            var randArtist = artist.artist[Math.floor(Math.random() * artist.artist.length)];
+
             // Set up game
 
             // $("#container").empty();
-            var artistLetters = "";
+            var artistLetters = [];
             //set up dashes
-            
-            var randArtist = artist.artist[Math.floor(Math.random() * artist.artist.length)];
+
             for (var i = 0; i < randArtist.length; i++) {
-                var artistLetters = ("_ " + artistLetters);
+
+                artistLetters[i] = "_ ";
+
             }
+
+            // console.log(artistLetters);
+            // var newDiv = $("<div>");
+            // newDiv.text(artistLetters);
+            // $(".word").append(artistLetters);
+            // console.log(randArtist)
+
+
+            //user letters picked
+            console.log(artistLetters);
             var newDiv = $("<div>");
             newDiv.text(artistLetters);
+            $(".word").replaceAll(artistLetters);
             $(".word").append(artistLetters);
-            console.log(artistLetters)
+            document.onkeyup = function (event)
+            {
+                // rewriteArray(artistLetters);
+                var userGuess = event.key;
+
+                // console.log(userGuess)
+
+
+                //compair user guess against computer picked music artist
+
+
+                for (var i = 0; i < randArtist.length; i++)
+                {
+                    var currentLetter = randArtist.charAt(i);
+
+                   //  console.log(currentLetter);
+
+                    if (userGuess === currentLetter) {
+                       artistLetters.splice(i,1, userGuess);
+                        console.log(i);
+                        console.log(artistLetters);
+                        
+                        console.log(artistLetters);
+                    }
+
+                    else {
+
+                    // console.log(dashUpdate);
+
+                    }
+                
+                }
+                 rewriteArray(artistLetters);
+                console.log(artistLetters);
+
+            }
+            function rewriteArray()
+            {
+                console.log(artistLetters);
+            
+            // newDiv.text(artistLetters);
+            $(".word").replaceAll(artistLetters);
+            $(".word").text(artistLetters);//angry part of the code
+
+            console.log(randArtist)
+             console.log(artistLetters);
+            }
+           
+
 
         });
+
     </script>
+
+ 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
