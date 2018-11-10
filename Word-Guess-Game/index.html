@@ -75,6 +75,9 @@
 
                     <div class="col-md">
                         <h4 id="lettersGuessed">Letters already Guessed</h4>
+                        <div class="guessed">
+
+                        </div>
                     </div>
 
                 </div>
@@ -89,7 +92,7 @@
 
         $(document).ready(function () {
 
-            var userGuess = "";
+            var userGuess = [];
             var wins = 0;
             var loses = 0;
             var gamefinish = true;
@@ -100,7 +103,7 @@
             }
 
             var randArtist = artist.artist[Math.floor(Math.random() * artist.artist.length)];
-
+            var tiesText = document.getElementById("guessed");
             // Set up game
 
             // $("#container").empty();
@@ -124,14 +127,15 @@
             console.log(artistLetters);
             var newDiv = $("<div>");
             newDiv.text(artistLetters);
-            $(".word").replaceAll(artistLetters);
-            $(".word").append(artistLetters);
+             $(".word").replaceAll(artistLetters);
+             $(".word").append(artistLetters);
+
             document.onkeyup = function (event)
             {
                 // rewriteArray(artistLetters);
                 var userGuess = event.key;
-
-                // console.log(userGuess)
+                
+                
 
 
                 //compair user guess against computer picked music artist
@@ -144,20 +148,27 @@
                    //  console.log(currentLetter);
 
                     if (userGuess === currentLetter) {
-                       artistLetters.splice(i,1, userGuess);
+                       artistLetters.splice(i,1 , userGuess);
                         console.log(i);
-                        console.log(artistLetters);
-                        
-                        console.log(artistLetters);
-                    }
-
-                    else {
-
-                    // console.log(dashUpdate);
-
+                        console.log(artistLetters);   
                     }
                 
+                    
+                    else
+                    {
+                    }
+                    
+                   
                 }
+                if (userGuess !== userGuess )
+                    {                        
+                       
+                    }
+                    else
+                    {
+                        $(".guessed").append(userGuess+ " ,");
+                    }
+                
                  rewriteArray(artistLetters);
                 console.log(artistLetters);
 
@@ -165,13 +176,10 @@
             function rewriteArray()
             {
                 console.log(artistLetters);
-            
-            // newDiv.text(artistLetters);
             $(".word").replaceAll(artistLetters);
-            $(".word").text(artistLetters);//angry part of the code
-
-            console.log(randArtist)
-             console.log(artistLetters);
+            $(".word").html(artistLetters);
+            
+            
             }
            
 
