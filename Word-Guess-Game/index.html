@@ -20,8 +20,9 @@
 <body style="background-color:black">
     <div class="jumbotron jumbotron-fluid" style="background-color: black; color:#ffffff">
         <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <img src="https://divine-jones.com/jones_proteus_horiz01_large.jpg">
+        
+            
         </div>
     </div>
 
@@ -100,19 +101,20 @@
             var userGuess = [];
             var wins = 0;
             var loses = 0;
-            var gamefinish = true;
+            var gamefinish = false;
             var guesses = 15;
             var userGuessArray = [];
             var artistLetters = [];
+            
             var artist = {
                 artist: ["gregory", "jason", "dj"],
 
             }
-
+            
+            
             var randArtist = artist.artist[Math.floor(Math.random() * artist.artist.length)];
             
-            // Set up game
-            //$("#container").empty();
+           
             //set up dashes
             
             for (var i = 0; i < randArtist.length; i++) {
@@ -120,7 +122,7 @@
                 artistLetters[i] = "_ ";
 
             }
-
+             
             //user letters picked
             console.log(artistLetters);
             var newDiv = $("<div>");
@@ -128,16 +130,36 @@
              $(".word").replaceAll(artistLetters);
              $(".word").append(artistLetters);
             
+            
+                
             document.onkeyup = function (event)
             {
+                if(gamefinish==true){
+                    $(".word").replaceWith("");
+                    $(".guessed").replaceWith("");
+                    $("#numGuesses").replaceWith("15")
+                    guesses =15;
+                    
+                    gamefinish==false;
+                     randArtist = artist.artist[Math.floor(Math.random() * artist.artist.length)];
+            
+            // Set up game
+           // $("#container").empty();
+            //set up dashes
+            
+            for (var i = 0; i < randArtist.length; i++) {
+
+                artistLetters[i] = "_ ";
+
+            }
+             
+                    
+                }
                 
                 var userGuess = event.key;
                 
                userGuessArray.push(event.key);
                 
-                
-
-
                 //compair user guess against computer picked music artist
 
 
@@ -185,10 +207,17 @@
                
             if(randArtist===$(".word").text()){
                 wins++;
+                gamefinish=true;
                 $("#wins").text("Wins: "+wins.toString());
                
             }    
+            if(guesses == 0){
+                loses++;
+                gamefinish=true;
+                $("#loses").text("loses: "+loses.toString());
 
+            }
+           
             }
             function rewriteArray()
             {
