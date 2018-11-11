@@ -159,31 +159,6 @@
                    
                 }
                       
-                // for(var i =0; i < userGuessArray.length; i++)
-                // {
-                //      if(userGuess===userGuessArray[i])
-                //     {
-
-                //     }
-                //     else
-                //     {
-                //         $(".guessed").append(userGuess+ " ,")
-                //     }
-                         
-                // }
-                // userGuessArray.forEach(guess)
-                // {
-                //     if(guess===userGuess)
-                //     {
-
-                //     }
-                //     else
-                //     {
-                //         $(".guessed").append(userGuess+ " ,")
-                //     }
-                // }     
-                // $(".guessed").append(userGuess+ " ,");  
-                //     alert($(".guessed").text());
                 userGuessArray.forEach(element => {
                     
                        if(element===userGuess)
@@ -191,6 +166,8 @@
                         
                       if( $(".guessed").text().search(element+ " ,")<=0){
                             $(".guessed").append(userGuess+ " ,");
+                            guesses--;
+                            
                         }
                         
                     }
@@ -199,13 +176,18 @@
                 });
                         // $(".guessed").append(userGuess+ " ,")
                     
-                
+                   $("#numGuesses").replaceAll(guesses.toString());
+                   $("#numGuesses").html(guesses.toString());
                 
 
                
                 rewriteArray(artistLetters);
-                 
-                console.log(artistLetters);
+               
+            if(randArtist===$(".word").text()){
+                wins++;
+                $("#wins").text("Wins: "+wins.toString());
+               
+            }    
 
             }
             function rewriteArray()
@@ -216,7 +198,7 @@
             
             
             }
-           
+        
 
 
         });
